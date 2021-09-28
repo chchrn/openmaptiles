@@ -241,7 +241,7 @@ echo "--------------------------------------------------------------------------
 echo "====> : Start importing Wikidata: Wikidata Query Service -> PostgreSQL"
 echo "      : The Wikidata license: CC0 - https://www.wikidata.org/wiki/Wikidata:Main_Page "
 echo "      : Thank you Wikidata Contributors ! "
-make import-wikidata
+#make import-wikidata
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
