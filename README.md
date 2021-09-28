@@ -150,8 +150,26 @@ Now you are ready to **generate the vector tiles**. By default, `./.env` specifi
 
 ```
 make generate-bbox-file  # compute data bbox -- not needed for the whole planet
-make generate-tiles      # generate tiles
+make generate-tiles-pg   # generate tiles
 ```
+
+### Workflow to generate tiles
+If you go from top to bottom you can be sure that it will generate a .mbtiles file out of a .osm.pbf file
+```
+make clean                  # clean / remove existing build files
+make                        # generate build files
+make start-db               # start up the database container.
+make import-data            # Import external data from OpenStreetMapData, Natural Earth and OpenStreetMap Lake Labels.
+make download area=albania  # download albania .osm.pbf file -- can be skipped if a .osm.pbf file already existing
+make import-osm             # import data into postgres
+make import-borders         # create borders table
+make import-wikidata        # import Wikidata
+make import-sql             # create / import sql funtions 
+make generate-bbox-file     # compute data bbox -- not needed for the whole planet
+make generate-tiles-pg      # generate tiles
+```
+Instead of calling `make download area=albania` you can add a .osm.pbf file in the `data` folder `openmaptiles/data/your_area_file.osm.pbf`
+
 
 ## License
 
